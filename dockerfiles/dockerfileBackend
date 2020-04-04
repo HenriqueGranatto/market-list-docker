@@ -16,3 +16,4 @@ COPY ./resources/.env ./
 
 # INSTALL DEPENDENCIES
 RUN npm install
+RUN npm i -g @adonisjs/cli
