@@ -26,6 +26,20 @@ services:
     #     networks:
     #         - frontend
 
+    database:
+        image: mysql:5.7
+        container_name: market-list-database
+        restart: always
+        env_file: 
+            - ./.env
+        environment:
+            MYSQL_ROOT_PASSWORD: "${MARKET_LIST_DATABASE_PASSWORD}"
+            MYSQL_DATABASE: "${MARKET_LIST_DATABASE_NAME}"
+        ports:
+            - "${MARKET_LIST_DATABASE_PORT}:3306"
+        networks:
+            - backend
+
     backend:
         build:
             context: ./dockerfiles
@@ -42,20 +56,6 @@ services:
             - "${MARKET_LIST_BACKEND_PORT}:3333"
         depends_on:
             - database
-        networks:
-            - backend
-
-    database:
-        image: mysql:5.7
-        container_name: market-list-database
-        restart: always
-        env_file: 
-            - ./.env
-        environment:
-            MYSQL_ROOT_PASSWORD: "${MARKET_LIST_DATABASE_PASSWORD}"
-            MYSQL_DATABASE: "${MARKET_LIST_DATABASE_NAME}"
-        ports:
-            - "${MARKET_LIST_DATABASE_PORT}:3306"
         networks:
             - backend
 
