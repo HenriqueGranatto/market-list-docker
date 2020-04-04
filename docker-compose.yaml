@@ -7,24 +7,24 @@ networks:
         name: "backend"
 
 services:
-    # frontend:
-    #     build:
-    #         context: ./dockerfiles
-    #         dockerfile: dockerfileFrontend
-    #         args:
-    #             GIT: ${MARKET_LIST_FRONTEND_GIT}
-    #     env_file: 
-    #         - ./.env
-    #     image: market-list-frontend:latest
-    #     container_name: market-list-frontend
-    #     command: npm start
-    #     restart: always
-    #     ports:
-    #         - "${MARKET_LIST_FRONTEND_PORT}:80"
-    #     depends_on:
-    #         - backend
-    #     networks:
-    #         - frontend
+    frontend:
+        build:
+            context: ./dockerfiles
+            dockerfile: dockerfileFrontend
+            args:
+                GIT: ${MARKET_LIST_FRONTEND_GIT}
+        env_file: 
+            - ./.env
+        image: market-list-frontend:latest
+        container_name: market-list-frontend
+        command: npm start
+        restart: always
+        ports:
+            - "${MARKET_LIST_FRONTEND_PORT}:3000"
+        depends_on:
+            - backend
+        networks:
+            - frontend
 
     database:
         image: mysql:5.7
