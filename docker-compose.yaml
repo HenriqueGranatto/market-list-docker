@@ -10,7 +10,7 @@ services:
     frontend:
         build:
             context: ./dockerfiles
-            dockerfile: DockerfileFrontend
+            dockerfile: dockerfileFrontend
             args:
                 GIT: ${MARKET_LIST_FRONTEND_GIT}
         env_file: 
@@ -29,7 +29,7 @@ services:
     backend:
         build:
             context: ./dockerfiles
-            dockerfile: DockerfileBackend
+            dockerfile: dockerfileBackend
             args:
                 GIT: ${MARKET_LIST_FRONTEND_GIT}
         env_file: 
