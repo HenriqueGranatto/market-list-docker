@@ -31,7 +31,7 @@ services:
             context: ./dockerfiles
             dockerfile: dockerfileBackend
             args:
-                GIT: ${MARKET_LIST_FRONTEND_GIT}
+                GIT: ${MARKET_LIST_BACKEND_GIT}
         env_file: 
             - ./.env
         image: market-list-backend:latest
