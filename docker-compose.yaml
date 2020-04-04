@@ -36,7 +36,7 @@ services:
             - ./.env
         image: market-list-backend:latest
         container_name: market-list-backend
-        command: adonis serve
+        command: adonis migration:run
         restart: always
         ports:
             - "${MARKET_LIST_BACKEND_PORT}:3333"
