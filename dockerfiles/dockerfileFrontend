@@ -1,7 +1,7 @@
 
 FROM node:slim
 
-ARG API_GIT
+ARG GIT
 
 RUN apt-get update
 RUN apt install -y git 
